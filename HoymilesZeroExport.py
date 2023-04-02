@@ -290,7 +290,7 @@ def GetPowermeterWattsEmlog():
     return int(Watts)
 
 def GetPowermeterWattsESPHomeSML():
-    url = f'http://{ESPHome_IP}/{ESPHome_Sensor}'
+    url = f'http://{ESPHOME_IP}/{ESPHOME_SENSOR}'
     ParsedData = requests.get(url).json()
     Watts = int(ParsedData['value'])
     logger.info("powermeter ESPHome: %s %s",Watts," Watt")
@@ -366,6 +366,7 @@ USE_SHELLY_3EM = config.getboolean('SELECT_POWERMETER', 'USE_SHELLY_3EM')
 USE_SHELLY_3EM_PRO = config.getboolean('SELECT_POWERMETER', 'USE_SHELLY_3EM_PRO')
 USE_SHRDZM = config.getboolean('SELECT_POWERMETER', 'USE_SHRDZM')
 USE_EMLOG = config.getboolean('SELECT_POWERMETER', 'USE_EMLOG')
+USE_ESPHOME = config.getboolean('SELECT_POWERMETER', 'USE_ESPHOME')
 AHOY_IP = config.get('AHOY_DTU', 'AHOY_IP')
 OPENDTU_IP = config.get('OPEN_DTU', 'OPENDTU_IP')
 OPENDTU_USER = config.get('OPEN_DTU', 'OPENDTU_USER')
@@ -382,6 +383,8 @@ SHRDZM_IP = config.get('SHRDZM', 'SHRDZM_IP')
 SHRDZM_USER = config.get('SHRDZM', 'SHRDZM_USER')
 SHRDZM_PASS = config.get('SHRDZM', 'SHRDZM_PASS')
 EMLOG_IP = config.get('EMLOG', 'EMLOG_IP')
+ESPHOME_IP = config.get('ESPHOME','ESPHOME_IP')
+ESPHOME_SENSOR = config.get('ESPHOME','ESPHOME_SENSOR')
 EMLOG_METERINDEX = config.get('EMLOG', 'EMLOG_METERINDEX')
 USE_TASMOTA_INTERMEDIATE = config.getboolean('SELECT_INTERMEDIATE_METER', 'USE_TASMOTA_INTERMEDIATE')
 USE_SHELLY_3EM_INTERMEDIATE = config.getboolean('SELECT_INTERMEDIATE_METER', 'USE_SHELLY_3EM_INTERMEDIATE')
