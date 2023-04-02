@@ -308,7 +308,7 @@ def GetPowermeterWatts():
             return GetPowermeterWattsShrdzm()
         elif USE_EMLOG:
             return GetPowermeterWattsEmlog()
-        elif USE_ESPHome:
+        elif USE_ESPHOME:
             return GetPowermeterWattsESPHomeSML()
         else:
             raise Exception("Error: no powermeter defined!")
