@@ -289,6 +289,13 @@ def GetPowermeterWattsEmlog():
     logger.info("powermeter EMLOG: %s %s",Watts," Watt")
     return int(Watts)
 
+def GetPowermeterWattsESPHomeSML():
+    url = f'http://{ESPHome_IP}/{ESPHome_Sensor}'
+    ParsedData = requests.get(url).json()
+    Watts = int(ParsedData['value'])
+    logger.info("powermeter ESPHome: %s %s",Watts," Watt")
+    return int(Watts)
+
 def GetPowermeterWatts():
     try:
         if USE_SHELLY_3EM:
@@ -301,6 +308,8 @@ def GetPowermeterWatts():
             return GetPowermeterWattsShrdzm()
         elif USE_EMLOG:
             return GetPowermeterWattsEmlog()
+        elif USE_ESPHome:
+            return GetPowermeterWattsESPHomeSML()
         else:
             raise Exception("Error: no powermeter defined!")
     except:
